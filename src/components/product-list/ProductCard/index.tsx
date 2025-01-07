@@ -1,5 +1,6 @@
 import React from "react";
 import { AddToCartButton } from "../AddToCartButton";
+import { priceFormatter } from "@/utils";
 
 interface ProductCardProps {
   image: {
@@ -35,7 +36,7 @@ export const ProductCard = ({
       <div className="">
         <span className="text-rose-500 text-sm">{category}</span>
         <h3 className="text-rose-900 font-semibold">{name}</h3>
-        <p className="text-red_color font-semibold">{price}</p>
+        <p className="text-red_color font-semibold">{priceFormatter(price)}</p>
       </div>
     </li>
   );
