@@ -1,4 +1,5 @@
 import React from "react";
+import { AddToCartButton } from "../AddToCartButton";
 
 interface ProductCardProps {
   image: {
@@ -28,6 +29,8 @@ export const ProductCard = ({
             className="max-h-[257px] w-full rounded-lg shadow"
           />
         </picture>
+
+        <AddToCartButton />
       </div>
       <div className="">
         <span className="text-rose-500 text-sm">{category}</span>

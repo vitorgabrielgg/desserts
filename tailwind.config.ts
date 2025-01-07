@@ -16,6 +16,7 @@ export default {
         500: "hsl(12, 20%, 44%)",
         900: "hsl(14, 65%, 9%)",
       },
+      white: "#FFFFFF",
     },
     extend: {
       colors: {
