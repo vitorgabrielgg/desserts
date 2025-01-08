@@ -1,3 +1,4 @@
+import { CarbonNeutral } from "../CarbonNeutral";
 import { CartItem } from "../CartItem";
 import { OrderTotal } from "../OrderTotal";
 
@@ -13,6 +14,7 @@ export const Cart = () => {
       </ul>
 
       <OrderTotal totalPrice={46.5} />
+      <CarbonNeutral />
     </section>
   );
 };
