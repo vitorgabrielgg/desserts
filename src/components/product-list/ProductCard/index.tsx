@@ -1,4 +1,3 @@
-import React from "react";
 import { AddToCartButton } from "../AddToCartButton";
 import { priceFormatter } from "@/utils";
 
@@ -24,9 +23,12 @@ export const ProductCard = ({
     <li>
       <div className="pb-8 relative">
         <picture>
+          <source media="(min-width: 1024px)" srcSet={image.desktop} />
+          <source media="(min-width: 640px)" srcSet={image.tablet} />
+
           <img
             src={image.mobile}
-            alt=""
+            alt={name}
             className="max-h-[257px] w-full rounded-lg shadow"
           />
         </picture>
