@@ -20,6 +20,7 @@ export default {
     },
     extend: {
       colors: {
+        dark_red_color: "#952C0C",
         red_color: "hsl(14, 86%, 42%)",
         green_color: "hsl(159, 69%, 38%)",
       },

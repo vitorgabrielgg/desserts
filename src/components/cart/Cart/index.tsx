@@ -1,5 +1,6 @@
 import { CarbonNeutral } from "../CarbonNeutral";
 import { CartItem } from "../CartItem";
+import { ConfirmOrderButton } from "../ConfirmOrderButton";
 import { OrderTotal } from "../OrderTotal";
 
 export const Cart = () => {
@@ -15,6 +16,7 @@ export const Cart = () => {
 
       <OrderTotal totalPrice={46.5} />
       <CarbonNeutral />
+      <ConfirmOrderButton />
     </section>
   );
 };
