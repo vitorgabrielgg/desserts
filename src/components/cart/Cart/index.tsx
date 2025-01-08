@@ -6,7 +6,7 @@ import { OrderTotal } from "../OrderTotal";
 
 export const Cart = () => {
   return (
-    <section className="bg-white mt-7 px-6 py-6 shadow rounded-lg">
+    <section className="bg-white px-6 py-6 shadow rounded-lg lg:max-w-[22rem] xl:max-w-96 flex-1">
       <h2 className="text-red_color font-bold text-2xl">Your Cart (0)</h2>
 
       <EmptyCart />

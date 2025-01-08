@@ -5,7 +5,7 @@ export const EmptyCart = () => {
   return (
     <div className="flex flex-col items-center pt-8 pb-4">
       <Image src={emptyCartIllustration} alt="Empty cart illustration" />
-      <p className="text-rose-400 font-semibold text-sm">
+      <p className="text-rose-400 font-semibold text-sm text-center">
         Your added items will appear here
       </p>
     </div>
