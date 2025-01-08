@@ -1,4 +1,5 @@
 import { CartItem } from "../CartItem";
+import { OrderTotal } from "../OrderTotal";
 
 export const Cart = () => {
   return (
@@ -10,6 +11,8 @@ export const Cart = () => {
         <CartItem name="Vanilla Bean Crème Brûlée" price={7.0} quantity={4} />
         <CartItem name="Vanilla Panna Cotta" price={6.5} quantity={2} />
       </ul>
+
+      <OrderTotal totalPrice={46.5} />
     </section>
   );
 };
