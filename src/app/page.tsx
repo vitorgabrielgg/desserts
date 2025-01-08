@@ -1,4 +1,4 @@
-import { ProductList } from "@/components";
+import { Cart, ProductList } from "@/components";
 
 export default function Home() {
   return (
@@ -7,6 +7,7 @@ export default function Home() {
         <h1 className="text-rose-900 font-bold text-4xl">Desserts</h1>
         <ProductList />
       </section>
+      <Cart />
     </main>
   );
 }
