@@ -61,6 +61,36 @@ describe("Add to cart button", () => {
     expect(state.cart.products[0]).toEqual({ ...product, quantity: 2 });
   });
 
+  test("should decrement the product quantity", () => {
+    renderAddToCartButton();
+
+    const addToCartButton = screen.getByLabelText(
+      `Add to cart ${product.name}`
+    );
+    fireEvent.click(addToCartButton);
+
+    const incrementQuantityButton = screen.getByLabelText(
+      `Increment the quantity of ${product.name}`
+    );
+    fireEvent.click(incrementQuantityButton);
+
+    let state = store.getState();
+
+    expect(state.cart.products[0]).toEqual({ ...product, quantity: 2 });
+
+    const decrementQuantityButton = screen.getByLabelText(
+      `Decrement the quantity of ${product.name}`
+    );
+    fireEvent.click(decrementQuantityButton);
+
+    state = store.getState();
+
+    expect(state.cart.products[0]).toEqual({
+      ...product,
+      quantity: 1,
+    });
+  });
+
   const renderAddToCartButton = () => {
     render(
       <Provider store={store}>
