@@ -19,9 +19,14 @@ export const cartStore = createSlice({
     ) => {
       state.products.push({ ...action.payload, quantity: 1 });
     },
+    incrementQuantity: (state, action: PayloadAction<{ name: string }>) => {
+      state.products.find(
+        (product) => product.name === action.payload.name && product.quantity++
+      );
+    },
   },
 });
 
-export const { addProduct } = cartStore.actions;
+export const { addProduct, incrementQuantity } = cartStore.actions;
 
 export default cartStore.reducer;
