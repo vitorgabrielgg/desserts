@@ -8,7 +8,11 @@ import {
 } from "@/components/icons";
 import { CartItemProps } from "@/types";
 import { useAppDispatch, useAppSelector } from "@/store";
-import { addProduct, incrementQuantity } from "@/store/Cart/cart.store";
+import {
+  addProduct,
+  decrementQuantity,
+  incrementQuantity,
+} from "@/store/Cart/cart.store";
 
 export const AddToCartButton = ({
   name,
@@ -34,7 +38,10 @@ export const AddToCartButton = ({
           className="flex items-center justify-between w-full h-full px-4"
           aria-label={`Change the quantity of ${name}`}
         >
-          <QuantityDecrementIcon />
+          <QuantityDecrementIcon
+            aria-label={`Decrement the quantity of ${name}`}
+            onClick={() => dispatch(decrementQuantity({ name }))}
+          />
           <span className="text-white font-semibold">{productQuantity}</span>
           <QuantityIncrementIcon
             aria-label={`Increment the quantity of ${name}`}
