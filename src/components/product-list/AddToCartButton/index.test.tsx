@@ -1,16 +1,25 @@
 import { Provider } from "react-redux";
-import store from "../../../store";
+import cartReducer from "../../../store/Cart/cart.store";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { AddToCartButton } from ".";
 import { CartItemProps } from "@/types";
+import { configureStore, EnhancedStore } from "@reduxjs/toolkit";
 
 describe("Add to cart button", () => {
+  let store: EnhancedStore<{ cart: ReturnType<typeof cartReducer> }>;
+
   const product: Omit<CartItemProps, "quantity"> = {
     name: "Waffle with Berries",
     price: 6.5,
   };
 
-  test("should add a product to the global state when clicking the button", async () => {
+  beforeEach(() => {
+    store = configureStore({
+      reducer: { cart: cartReducer },
+    });
+  });
+
+  test("should add a product to the global state when clicking the button", () => {
     renderAddToCartButton();
 
     const addToCartButton = screen.getByLabelText(
