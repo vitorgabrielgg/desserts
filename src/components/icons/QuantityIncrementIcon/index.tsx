@@ -1,6 +1,11 @@
-export const QuantityIncrementIcon = () => {
+import { IconProps } from "@/types";
+
+export const QuantityIncrementIcon = (props: IconProps) => {
   return (
-    <div className="group hover:bg-white border border-white p-[3px] rounded-full transition-colors">
+    <button
+      className="group hover:bg-white border border-white p-[3px] rounded-full transition-colors"
+      {...props}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="11"
@@ -13,6 +18,6 @@ export const QuantityIncrementIcon = () => {
           d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
         />
       </svg>
-    </div>
+    </button>
   );
 };
