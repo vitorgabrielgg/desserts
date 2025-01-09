@@ -24,9 +24,14 @@ export const cartStore = createSlice({
         (product) => product.name === action.payload.name && product.quantity++
       );
     },
+    decrementQuantity: (state, action: PayloadAction<{ name: string }>) => {
+      state.products.find(
+        (product) => product.name === action.payload.name && product.quantity--
+      );
+    },
   },
 });
 
-export const { addProduct, incrementQuantity } = cartStore.actions;
+export const { addProduct, incrementQuantity,decrementQuantity } = cartStore.actions;
 
 export default cartStore.reducer;
