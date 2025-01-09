@@ -33,7 +33,7 @@ export const ProductCard = ({
           />
         </picture>
 
-        <AddToCartButton />
+        <AddToCartButton name={name} price={price} />
       </div>
       <div className="">
         <span className="text-rose-500 text-sm">{category}</span>
