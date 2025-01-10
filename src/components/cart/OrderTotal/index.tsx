@@ -8,7 +8,7 @@ export const OrderTotal = ({ totalPrice }: OrderTotalProps) => {
   return (
     <div className="flex items-center justify-between py-6 text-rose-900">
       <p>Order Total</p>
-      <span className="font-bold text-[1.55rem]">
+      <span className="font-bold text-[1.55rem]" aria-label="Order total price">
         {priceFormatter(totalPrice)}
       </span>
     </div>
