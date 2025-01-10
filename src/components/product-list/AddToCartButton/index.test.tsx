@@ -91,6 +91,31 @@ describe("Add to cart button", () => {
     });
   });
 
+  test("should hide the change quantity field when the product quantity is 0", () => {
+    renderAddToCartButton();
+
+    const addToCartButton = screen.getByLabelText(
+      `Add to cart ${product.name}`
+    );
+    fireEvent.click(addToCartButton);
+
+    const decrementQuantityButton = screen.getByLabelText(
+      `Decrement the quantity of ${product.name}`
+    );
+    fireEvent.click(decrementQuantityButton);
+
+    const changeQuantityField = screen.queryByLabelText(
+      `Change the quantity of ${product.name}`
+    );
+
+    const state = store.getState();
+    expect(
+      state.cart.products.find((p) => p.name === product.name)
+    ).toBeUndefined();
+    expect(changeQuantityField).not.toBeInTheDocument();
+    expect(addToCartButton).toBeInTheDocument();
+  });
+
   const renderAddToCartButton = () => {
     render(
       <Provider store={store}>
