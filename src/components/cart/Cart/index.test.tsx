@@ -10,6 +10,12 @@ import { Cart } from ".";
 
 describe("Cart", () => {
   let store: EnhancedStore<{ cart: ReturnType<typeof cartReducer> }>;
+
+  const product: Omit<CartItemProps, "quantity"> = {
+    name: "Waffle with Berries",
+    price: 6.5,
+  };
+
   beforeEach(() => {
     store = configureStore({
       reducer: { cart: cartReducer },
@@ -57,6 +63,18 @@ describe("Cart", () => {
 
     expect(emptyCart).toBeInTheDocument();
     expect(cartItemList).not.toBeInTheDocument();
+  });
+
+  test("should show the cart item list component", () => {
+    store.dispatch(addProduct({ ...product }));
+
+    renderCart(store);
+
+    const emptyCart = screen.queryByLabelText("Empty cart");
+    const cartItemList = screen.getByLabelText("Cart item list");
+
+    expect(cartItemList).toBeInTheDocument();
+    expect(emptyCart).not.toBeInTheDocument();
   });
 
   const renderCart = (
