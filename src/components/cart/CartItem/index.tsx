@@ -1,6 +1,5 @@
-import Image from "next/image";
-import removeItemIcon from "../../../../public/images/icon-remove-item.svg";
 import { priceFormatter } from "@/utils";
+import { RemoveItemIcon } from "@/components/icons";
 
 interface CartItemProps {
   quantity: number;
@@ -37,9 +36,7 @@ export const CartItem = ({ name, price, quantity }: CartItemProps) => {
         </div>
       </div>
 
-      <button className="border border-rose-400 p-0.5 rounded-full">
-        <Image src={removeItemIcon} alt="Remove item from cart" />
-      </button>
+      <RemoveItemIcon />
     </li>
   );
 };
