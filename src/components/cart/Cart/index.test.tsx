@@ -49,6 +49,16 @@ describe("Cart", () => {
     );
   });
 
+  test("should show the empty cart component", () => {
+    renderCart(store);
+
+    const emptyCart = screen.getByLabelText("Empty cart");
+    const cartItemList = screen.queryByLabelText("Cart item list");
+
+    expect(emptyCart).toBeInTheDocument();
+    expect(cartItemList).not.toBeInTheDocument();
+  });
+
   const renderCart = (
     storeParam: EnhancedStore<{ cart: ReturnType<typeof cartReducer> }>
   ) => {
