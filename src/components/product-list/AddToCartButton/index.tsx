@@ -21,8 +21,6 @@ export const AddToCartButton = ({
   const dispatch = useAppDispatch();
   const { products } = useAppSelector((state) => state.cart);
 
-  console.log(products);
-
   const isOnTheCart = products.find((product) => product.name === name);
 
   const productQuantity = isOnTheCart?.quantity;

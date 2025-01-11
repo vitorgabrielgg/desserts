@@ -1,13 +1,12 @@
 import { priceFormatter } from "@/utils";
 import { RemoveItemIcon } from "@/components/icons";
-
-interface CartItemProps {
-  quantity: number;
-  price: number;
-  name: string;
-}
+import { useAppDispatch } from "@/store";
+import { removeProduct } from "@/store/Cart/cart.store";
+import { CartItemProps } from "@/types";
 
 export const CartItem = ({ name, price, quantity }: CartItemProps) => {
+  const dispatch = useAppDispatch();
+
   return (
     <li className="flex items-center justify-between border-b border-rose-100 py-4">
       <div className="flex flex-col gap-1">
@@ -36,7 +35,10 @@ export const CartItem = ({ name, price, quantity }: CartItemProps) => {
         </div>
       </div>
 
-      <RemoveItemIcon />
+      <RemoveItemIcon
+        aria-label={`Remove item ${name}`}
+        onClick={() => dispatch(removeProduct({ name }))}
+      />
     </li>
   );
 };

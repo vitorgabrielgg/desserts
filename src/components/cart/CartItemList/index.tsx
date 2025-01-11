@@ -8,9 +8,9 @@ interface CartListProps {
 export const CartItemList = ({ products }: CartListProps) => {
   return (
     <ul className="mt-2" aria-label="Cart item list">
-      {products.map((product, i) => (
+      {products.map((product) => (
         <CartItem
-          key={i}
+          key={product.name}
           name={product.name}
           price={product.price}
           quantity={product.quantity}
