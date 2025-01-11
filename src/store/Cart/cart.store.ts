@@ -33,18 +33,9 @@ export const cartStore = createSlice({
     },
 
     decrementQuantity: (state, action: PayloadAction<{ name: string }>) => {
-      state.products.find((product) => {
-        if (product.name === action.payload.name) {
-          if (product.quantity >= 2) {
-            product.quantity--;
-          } else {
-            const indexProduct = state.products.findIndex(
-              (p) => p.name === product.name
-            );
-            state.products.splice(indexProduct, 1);
-          }
-        }
-      });
+      state.products.find(
+        (product) => product.name === action.payload.name && product.quantity--
+      );
     },
   },
 });

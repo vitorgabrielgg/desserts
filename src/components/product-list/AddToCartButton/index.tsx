@@ -12,6 +12,7 @@ import {
   addProduct,
   decrementQuantity,
   incrementQuantity,
+  removeProduct,
 } from "@/store/Cart/cart.store";
 
 export const AddToCartButton = ({
@@ -38,7 +39,13 @@ export const AddToCartButton = ({
         >
           <QuantityDecrementIcon
             aria-label={`Decrement the quantity of ${name}`}
-            onClick={() => dispatch(decrementQuantity({ name }))}
+            onClick={() => {
+              if (productQuantity && productQuantity >= 2) {
+                dispatch(decrementQuantity({ name }));
+              } else {
+                dispatch(removeProduct({ name }));
+              }
+            }}
           />
           <span className="text-white font-semibold">{productQuantity}</span>
           <QuantityIncrementIcon
