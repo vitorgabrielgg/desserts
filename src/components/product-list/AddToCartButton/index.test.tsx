@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import cartReducer from "../../../store/Cart/cart.store";
+import cartReducer, { addProduct } from "../../../store/Cart/cart.store";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { AddToCartButton } from ".";
 import { CartItemProps } from "@/types";
@@ -92,12 +92,9 @@ describe("Add to cart button", () => {
   });
 
   test("should hide the change quantity field when the product quantity is 0", () => {
-    renderAddToCartButton();
+    store.dispatch(addProduct(product));
 
-    const addToCartButton = screen.getByLabelText(
-      `Add to cart ${product.name}`
-    );
-    fireEvent.click(addToCartButton);
+    renderAddToCartButton();
 
     const decrementQuantityButton = screen.getByLabelText(
       `Decrement the quantity of ${product.name}`
@@ -106,6 +103,10 @@ describe("Add to cart button", () => {
 
     const changeQuantityField = screen.queryByLabelText(
       `Change the quantity of ${product.name}`
+    );
+
+    const addToCartButton = screen.getByLabelText(
+      `Add to cart ${product.name}`
     );
 
     const state = store.getState();
