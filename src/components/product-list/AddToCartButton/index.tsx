@@ -27,7 +27,7 @@ export const AddToCartButton = ({
   const productQuantity = isOnTheCart?.quantity;
 
   return (
-    <button
+    <div
       className={`${
         isOnTheCart ? "bg-red_color" : "group bg-white border"
       } h-12 w-44 absolute bottom-2 left-2/4 -translate-x-2/4 border-rose-500 hover:border-red_color rounded-3xl transition-colors`}
@@ -54,7 +54,7 @@ export const AddToCartButton = ({
           />
         </div>
       ) : (
-        <div
+        <button
           className="flex items-center justify-center gap-2 px-10 h-full"
           aria-label={`Add to cart ${name}`}
           onClick={() => dispatch(addProduct({ name, price }))}
@@ -63,8 +63,8 @@ export const AddToCartButton = ({
           <p className="text-rose-900 group-hover:text-red_color font-semibold whitespace-nowrap transition-colors">
             Add to Cart
           </p>
-        </div>
+        </button>
       )}
-    </button>
+    </div>
   );
 };
