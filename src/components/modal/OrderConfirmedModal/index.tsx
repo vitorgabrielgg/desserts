@@ -4,6 +4,7 @@ import { useAppSelector } from "@/store";
 import { OrderTotal } from "@/components/cart/OrderTotal";
 import { OrderItem } from "../OrderItem";
 import productData from "../../../../data.json";
+import { StartNewOrderButton } from "../StartNewOrderButton";
 
 export const OrderConfirmedModal = () => {
   const { products } = useAppSelector((state) => state.cart);
@@ -44,6 +45,8 @@ export const OrderConfirmedModal = () => {
             <OrderTotal totalPrice={totalPrice} />
           </div>
         </div>
+
+        <StartNewOrderButton />
       </div>
     </div>
   );
