@@ -37,6 +37,8 @@ export const cartStore = createSlice({
         (product) => product.name === action.payload.name && product.quantity--
       );
     },
+
+    resetCart: () => initialState,
   },
 });
 
@@ -45,6 +47,7 @@ export const {
   incrementQuantity,
   decrementQuantity,
   removeProduct,
+  resetCart,
 } = cartStore.actions;
 
 export default cartStore.reducer;
