@@ -1,7 +1,24 @@
 import { Cart } from "@/components/cart/Cart";
+import { OrderConfirmedModal } from "@/components/modal/OrderConfirmedModal";
 import { ProductList } from "@/components/product-list/ProductList";
+import { useAppSelector } from "@/store";
+import { useEffect } from "react";
 
 export const Desserts = () => {
+  const { isOpen } = useAppSelector((state) => state.modal);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
     <>
       <main className="bg-rose-50 min-h-screen p-5 lg:py-8 xl:py-14">
@@ -13,6 +30,7 @@ export const Desserts = () => {
           <Cart />
         </div>
       </main>
+      {isOpen && <OrderConfirmedModal />}
     </>
   );
 };
