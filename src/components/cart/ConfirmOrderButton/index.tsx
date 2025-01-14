@@ -8,6 +8,7 @@ export const ConfirmOrderButton = () => {
   return (
     <Button
       text="Confirm Order"
+      aria-label="Confirm order button"
       onClick={() => {
         dispatch(openModal());
         window.scrollTo({ top: 0, behavior: "smooth" });
