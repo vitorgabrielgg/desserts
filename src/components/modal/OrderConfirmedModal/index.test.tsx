@@ -1,7 +1,7 @@
 import { EnhancedStore, configureStore } from "@reduxjs/toolkit";
 import modalReducer, { openModal } from "../../../store/Modal/modal.store";
 import cartReducer from "../../../store/Cart/cart.store";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { addProduct } from "@/store/Cart/cart.store";
 import { CartItemProps } from "@/types";
@@ -36,6 +36,23 @@ describe("Order confirmed modal", () => {
 
     expect(orderConfirmedModal).toBeInTheDocument();
     expect(orderItem).toBeInTheDocument();
+  });
+
+  test("should hide the order confirmed modal when clicking outside the modal", () => {
+    store.dispatch(openModal());
+    store.dispatch(addProduct(product));
+
+    renderMainPage(store);
+
+    const outsideModal = screen.getByLabelText("Background modal");
+
+    fireEvent.click(outsideModal);
+
+    const orderConfirmedModal = screen.queryByLabelText(
+      "Order confirmed modal"
+    );
+
+    expect(orderConfirmedModal).not.toBeInTheDocument();
   });
 
   const renderMainPage = (
