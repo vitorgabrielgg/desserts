@@ -9,9 +9,13 @@ export const modalStore = createSlice({
     openModal: (state) => {
       state.isOpen = true;
     },
+
+    closeModal: (state) => {
+      state.isOpen = false;
+    },
   },
 });
 
-export const { openModal } = modalStore.actions;
+export const { openModal, closeModal } = modalStore.actions;
 
 export default modalStore.reducer;
